@@ -3,9 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@firebase/app": "^0.3.4",
+    "@firebase/auth": "^0.7.8",
+    "@firebase/firestore": "^0.8.6",
+    "antd": "^3.10.3",
+    "firebase": "^5.5.5",
+    "firebase-tools": "^6.0.0",
+    "lodash": "^4.17.11",
+    "moment": "^2.22.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
-    "react-scripts": "2.1.0"
+    "react-scripts": "2.1.0",
+    "sass": "^1.14.3"
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "react-scripts build",
+    "build": "npm-run-all build-css build-js",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   "scripts": {
     "start": "react-scripts start",
